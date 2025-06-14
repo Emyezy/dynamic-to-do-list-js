@@ -11,28 +11,24 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Create the list item and set its text content
         const li = document.createElement('li');
         li.textContent = taskText;
 
-        // Create the remove button
         const removeBtn = document.createElement('button');
         removeBtn.textContent = 'Remove';
-        removeBtn.className = 'remove-btn'; // ✅ use className instead of classList.add
+        removeBtn.className = 'remove-btn'; // required: className not classList
 
-        // Remove the task when the remove button is clicked
         removeBtn.onclick = function () {
             taskList.removeChild(li);
         };
 
-        // Append the button to the list item
         li.appendChild(removeBtn);
-
-        // Append the list item to the task list
         taskList.appendChild(li);
 
-        // Clear the input field
         taskInput.value = '';
     }
 
-    addButton.addEv
+    // ✅ Required by task
+    addButton.addEventListener('click', addTask);
+
+    // ✅ Required by task: use keypress and event.ke
